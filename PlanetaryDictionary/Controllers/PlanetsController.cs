@@ -40,7 +40,7 @@ namespace PlanetaryDictionary.Controllers
         query = query.Where(entry => entry.LifeFormDetails == lifeFormDetails);
       }
 
-      if(population != 0)
+      if(population != 0) // this is where they changed from !0 to > to be able to query by age
       {
         query = query.Where(entry => entry.Population == population);
       }
