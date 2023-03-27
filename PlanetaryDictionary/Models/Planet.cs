@@ -1,6 +1,6 @@
 namespace PlanetaryDictionary.Models
 {
-  public class PlanetaryDictionary
+  public class Planet
   {
     public int PlanetId { get; set; }
 
@@ -12,6 +12,6 @@ namespace PlanetaryDictionary.Models
 
     public string LifeFormDetails { get; set; }
 
-    public int population { get; set; }
+    public int Population { get; set; }
   }
 }
