@@ -13,7 +13,7 @@ namespace PlanetaryDictionary.Models
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-      builder.Entity<PlanetaryDictionary>()
+      builder.Entity<Planet>()
         .HasData(
           new Planet { PlanetId = 1, Name = "Mercury", FunFact = "This planet is shrinking! Mercury has no moons, and has volcanic activity.", Climate = "The surface is both extremely hot and cold, with temperatures ranging from 800F to -290F.", LifeFormDetails = "Steves, crablike humanoids, 3 inches tall, 5 claws and no head, eyes on feet", Population = 36,000,000},
           
