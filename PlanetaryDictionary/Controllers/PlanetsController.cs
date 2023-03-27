@@ -16,7 +16,7 @@ namespace PlanetaryDictionary.Controllers
     }
 
     [HttpGet]
-    public async Task<List<Planet>> Get(string name, string funFact, string climate, string lifeFormDetails, int population)
+    public async Task<List<Planet>> Get(string name, string funFact, string climate, string lifeFormDetails, int population, int minimumPopulation)
     {
       IQueryable<Planet> query = _db.Planets.AsQueryable();
 
@@ -40,9 +40,20 @@ namespace PlanetaryDictionary.Controllers
         query = query.Where(entry => entry.LifeFormDetails == lifeFormDetails);
       }
 
-      if(population != 0) // this is where they changed from !0 to > to be able to query by age
+
+      // this is where they changed from !0 to > to be able to query by age; they also used minimumAge instead of age: 
+      // if (minimumAge > 0)
+      // {
+      //   query = query.Where(entry => entry.Age >= minimumAge);
+      // }
+      if(population != 0) 
       {
         query = query.Where(entry => entry.Population == population);
+      }
+
+      if(minimumPopulation > 0)
+      {
+        query = query.Where(entry => entry.Population >= minimumPopulation);
       }
 
       return await query.ToListAsync();

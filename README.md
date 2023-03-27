@@ -90,12 +90,12 @@ Note: `{id}` is a variable and it should be replaced with the id number of the a
 
 #### Optional Query String Parameters for GET Request
 
-GET requests to `http://localhost:5000/api/planets/` can optionally include query strings to filter or search planets.
+GET requests to `http://localhost:5000/api/planets/` can optionally include query strings to filter or search planets. For example:
 
 | Parameter   | Type        |  Required    | Description |
 | ----------- | ----------- | -----------  | ----------- |
 | name        | String      | not required | Returns planets with a matching name value |
-| population  | Int         | not required | Returns planets with a matching population value |
+| population  | Number      | not required | Returns planets with a matching population value |
 
 
 
@@ -103,6 +103,12 @@ The following query will return all planets with the name "Mars":
 
 ```
 GET http://localhost:5000/api/planets?name=mars
+```
+
+You can include multiple query strings by separating them with an `&`:
+
+```
+GET http://localhost:5000/api/planets?name=mercury&population=36000000
 ```
 
 #### Additional Requirements for POST Request
