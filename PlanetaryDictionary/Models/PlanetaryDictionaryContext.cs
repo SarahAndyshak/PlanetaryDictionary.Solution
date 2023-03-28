@@ -1,3 +1,5 @@
+// using System;
+// using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace PlanetaryDictionary.Models
@@ -5,11 +7,15 @@ namespace PlanetaryDictionary.Models
   public class PlanetaryDictionaryContext : DbContext
   {
     public DbSet<Planet> Planets { get; set; }
+    // in tutorial: public DbSet<Planet>? Planets { get; set; }
 
     public PlanetaryDictionaryContext(DbContextOptions<PlanetaryDictionaryContext> options) : base(options)
     {
-
+    
     }
+
+
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

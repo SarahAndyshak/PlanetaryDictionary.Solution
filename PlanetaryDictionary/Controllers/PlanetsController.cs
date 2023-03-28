@@ -1,3 +1,5 @@
+// using System.Linq;
+// using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlanetaryDictionary.Models;
@@ -15,6 +17,32 @@ namespace PlanetaryDictionary.Controllers
       _db = db;
     }
 
+    [HttpGet("page/{page}")]
+    public async Task<ActionResult<List<Planet>>> GetPlanets(int page)
+    {
+      if (_db.Planets == null)
+        return NotFound();
+
+      var pageResults = 2f;
+      var pageCount = Math.Ceiling(_db.Planets.Count() / pageResults);
+
+      var planets = await _db.Planets
+                      .Skip((page - 1) * (int)pageResults)
+                      .Take((int)pageResults)
+                      .ToListAsync();
+      
+      var response = new PlanetResponse
+      {
+        Planets = planets,
+        CurrentPage = page,
+        Pages = (int)pageCount
+      };
+
+      return Ok(response);
+    }
+    
+
+// lesson's version of returning all planets as list
     [HttpGet]
     public async Task<List<Planet>> Get(string name, string funFact, string climate, string lifeFormDetails, int population, int minimumPopulation)
     {
