@@ -81,12 +81,13 @@ If you want to use the Planetary Dictionary Client, an ASP.NET Core MVC applicat
 ```
 GET http://localhost:5000/api/planets/
 GET http://localhost:5000/api/planets/{id}
+GET http://localhost:5000/api/planets/page/{page}
 POST http://localhost:5000/api/planets/
 PUT http://localhost:5000/api/planets/{id}
 DELETE http://localhost:5000/api/planets/{id}
 ```
 
-Note: `{id}` is a variable and it should be replaced with the id number of the animal you want to GET, PUT, or DELETE.
+Note: `{id}` is a variable and it should be replaced with the id number of the planet you want to GET, PUT, or DELETE. For GET .../page/{page}, {page} indicates the page number you wish to view. 
 
 #### Optional Query String Parameters for GET Request
 
@@ -103,6 +104,12 @@ The following query will return all planets with the name "Mars":
 
 ```
 GET http://localhost:5000/api/planets?name=mars
+```
+
+The following query will return the second page, with 2 planets on it:
+
+```
+GET http://localhost:5000/api/planets/page/2
 ```
 
 You can include multiple query strings by separating them with an `&`:
